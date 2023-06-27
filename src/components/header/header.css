@@ -1,0 +1,27 @@
+.header {
+    background-color: white;
+    height: 48px;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+}
+
+.btns {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+    align-items: center;
+}
+ul.menu {
+    display: flex;
+}
+
+li {
+    list-style: none;
+    padding: 10px;
+}
+
+.headerMenu {
+    width: 70%;
+}
