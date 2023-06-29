@@ -1,0 +1,41 @@
+.modal {
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border-left: 1px solid #cbcbcb;
+}
+.fadeIn {
+  animation: fadein 1s;
+}
+
+.fadeOut {
+  animation: fadeout 1s;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+}
+
+@keyframes fadein {
+  from {
+    margin-right: -100%;
+  }
+
+  to {
+    margin-right: 0px;
+  }
+}
+@keyframes fadeout {
+  from {
+    margin-right: 0px;
+  }
+
+  to {
+    margin-right: -100%;
+  }
+}

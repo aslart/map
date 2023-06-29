@@ -1,30 +1,42 @@
-
 import { useState } from 'react';
 import './App.css';
 import Content from './components/content/Content';
 import { Header } from './components/header/Header';
-import Road from './components/content/Road';
-import ContextTools from './contexts/ContextTools';
+import ActiveLayers from './components/content/ActiveLayers';
+import Modal from 'antd/es/modal/Modal';
 
 function App() {
-  const [visible, setVisible] = useState(true);
-  const handleModal = () => {
-    setVisible(!visible);
-  };
+  const [visible, setVisible] = useState(false);
+  const [content, setContent] = useState('');
+  const [styleModal, setStyleModal] = useState("modal fadeIn");
 
-  const componentRoad = () => {<Road />}  ;
-  const [text, setText] = useState('Text');
+
+  const openTool = (prop) => {
+    setStyleModal("modal fadeIn");
+   setVisible(true);
+    setContent(prop)
+  };
+  
+  const closeModal = () => {
+    setStyleModal("modal fadeOut");
+    setTimeout(()=> { setVisible(false)}, 1000);
+    
+     };
+
+const [visibleLayers, setVisibleLayers] = useState(false)
+function openLayers() {
+  setVisibleLayers(!visibleLayers)
+}
 
   return (
-    <ContextTools.Provider value={text}>
+  
     <div className="App">
-      
-        <Header onHandleModal={handleModal} visible={visible}  />
-        <Content visibility={handleModal} visible={visible}    />
-   
-      
+        <Header onHandleModal={openTool } visible={visible}   openLayers={openLayers} />
+        <Content  visibility={closeModal} visible={visible} content = {content} styleModal={styleModal}   />
+      <ActiveLayers openLayers={openLayers} visibleLayers={visibleLayers} />
+        
     </div>
-    </ContextTools.Provider>
+   
   );
 }
 

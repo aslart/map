@@ -1,59 +1,56 @@
-
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  DownOutlined,
+  MenuOutlined,
+  QuestionCircleOutlined,
+} from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown, message, Space, Tooltip } from 'antd';
 import HeaderMenu from '../menu/HeaderMenu';
+import Spravka from '../content/Spravka';
 
+const langs = [
+  {
+    label: 'Рус',
+    key: '1',
+  },
+  {
+    label: 'Каз',
+    key: '2',
+  },
+];
 
-
-const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    
-    message.info('Click on left button.');
-    console.log('click left button', e);
-  };
-  
-  const handleMenuClick: MenuProps['onClick'] = (e) => {
-    message.info('Click on menu item.');
-    console.log('click', e);
-  };
-
-const items: MenuProps['items'] = [
-    {
-      label: '1st menu item',
-      key: '1',
-      icon: <UserOutlined />,
-    },
-    {
-      label: '2nd menu item',
-      key: '2',
-      icon: <UserOutlined />,
-    }
-  
-  ];
-  
-  const menuProps = {
-    items,
-    onClick: handleMenuClick,
-  };
-
-export const Buttons = ({onHandleModal}) => {
-
+export const Buttons = ({
+  onHandleModal,
+  openLayers,
+  visibleMobileMenu,
+  toggleGamburger,
+}) => {
   return (
-    <div className='btns'> 
-     <HeaderMenu  onHandleModal={onHandleModal} />
-    <div className='buttons'>
-    {/* <Button type="primary" onClick={onHandleModal}>   {visible ? 'Hide' : 'Show'}</Button> */}
+    <div
+      className={`btns ${visibleMobileMenu ? 'active' : ''}`}
+      id="menu"
+    >
+      <HeaderMenu
+        onHandleModal={onHandleModal}
+        openLayers={openLayers}
+        toggleGamburger={toggleGamburger}
+      />
+      <div className="buttons">
         <Button type="primary">Вход</Button>
-        <Dropdown menu={menuProps}>
-      <Button>
-        <Space>
-          Button
-          <DownOutlined />
-        </Space>
-      </Button>
-    </Dropdown>
+        <Dropdown menu={{ items: langs }}>
+          <Button>
+            <Space>
+              Рус
+              <DownOutlined />
+            </Space>
+          </Button>
+        </Dropdown>
+        <Button
+          type="text"
+          icon={<QuestionCircleOutlined />}
+          onClick={() => onHandleModal(<Spravka />)}
+        />
+      </div>
     </div>
-    </div>
-   
-  )
-}
+  );
+};

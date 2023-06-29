@@ -2,7 +2,7 @@ import React from 'react'
 
 function Road() {
   return (
-    <div>Road</div>
+    <div className='roadComponent'>Road</div>
   )
 }
 

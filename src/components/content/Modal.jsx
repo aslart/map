@@ -1,21 +1,19 @@
 import React, { useState } from 'react'
-import Search from './Search'
 import { Resizable } from 're-resizable';
+import { CloseOutlined } from '@ant-design/icons';
+import { Button, Tooltip, Space } from 'antd';
+import './modal.css'
 import ContextTools from '../../contexts/ContextTools';
 
-const Modal = () => {
+const Modal = ({content, visibility, styleModal}) => {
     
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const showModal = () => {
-      setIsModalOpen(true);
-    };
 
   return (
     // <ContextTools.Consumer>
-         <div className='modal'>
-              <Resizable  defaultSize={{    width: 50,    height: '100%',  }}>
-                
+         <div className={styleModal} id='modal' >
+           <Button type='text' icon={<CloseOutlined />} className='closeBtn' onClick={() => visibility()}/>
+              <Resizable  defaultSize={{   height: '100%',  }}>
+              {content}
             </Resizable>
           </div>
     // </ContextTools.Consumer>

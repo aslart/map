@@ -1,5 +1,15 @@
-.App {
+* {
+  box-sizing: border-box;
+}
 
+.App {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+p.h3 {
+  padding: 0 10px;
 }

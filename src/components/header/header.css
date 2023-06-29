@@ -1,27 +1,74 @@
 .header {
-    background-color: white;
-    height: 48px;
-    justify-content: space-between;
-    display: flex;
-    width: 100%;
+  background-color: white;
+  height: 48px;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 3px #0003;
+  position: relative;
 }
-
+.headerMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+.buttons {
+  gap: 12px;
+  display: flex;
+}
 .btns {
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    width: inherit;
-    align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  align-items: center;
 }
 ul.menu {
-    display: flex;
+  display: flex;
 }
 
 li {
-    list-style: none;
-    padding: 10px;
+  list-style: none;
+  padding: 10px;
 }
 
-.headerMenu {
-    width: 70%;
+.addLayer {
+  width: 100%;
+  border-radius: 0;
+  height: 50px;
+}
+.gamburger {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .gamburger {
+    display: block;
+  }
+  .btns {
+    display: none;
+    background: white;
+    height: 100vh;
+    width: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    z-index: 1000;
+  }
+  .btns.active {
+    display: block;
+  }
+  .headerMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  .buttons {
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+  }
 }
